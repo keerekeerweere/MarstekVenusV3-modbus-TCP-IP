@@ -1,0 +1,340 @@
+type: masonry
+path: mt1
+title: Marstek M1
+icon: mdi:battery-charging-60
+cards:
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            entity: sensor.p1_meter_active_power
+            name: P1 meter
+            needle: true
+            max: 6000
+            severity:
+              green: -6000
+              yellow: 0
+              red: 0
+            min: -6000
+          - type: gauge
+            entity: sensor.marstek_m1_ac_power
+            name: My battery
+            needle: true
+            max: 2500
+            severity:
+              green: -2500
+              yellow: 0
+              red: 0
+            min: -2500
+          - type: gauge
+            entity: sensor.marstek_m1_battery_state_of_charge
+            name: Totaal
+            needle: true
+            max: 100
+            severity:
+              green: 66
+              yellow: 33
+              red: 0
+            min: 0
+      - type: entities
+        entities:
+          - entity: sensor.marstek_m1_battery_remaining_capacity
+            name: Battery remaining
+          - entity: sensor.marstek_m1_internal_temperature
+            name: Internal temperature
+      - type: history-graph
+        hours_to_show: 12
+        entities:
+          - entity: sensor.p1_meter_active_power
+            name: P1 meter
+      - type: custom:apexcharts-card
+        experimental:
+          color_threshold: true
+        cache: false
+        stacked: true
+        header:
+          show: true
+          show_states: true
+        graph_span: 1d
+        series:
+          - entity: sensor.marstek_m1_battery_state_of_charge
+            name: SOC
+            type: line
+            color: "#ffg"
+            stroke_width: 2
+            extend_to: false
+            curve: straight
+            group_by:
+              func: min
+              duration: 15min
+            show:
+              in_header: false
+          - entity: sensor.marstek_m1_ac_power
+            name: HW Batterij
+            group_by:
+              func: avg
+              duration: 15min
+            type: column
+            yaxis_id: energy
+            show:
+              in_header: false
+            float_precision: 0
+            color: "#8f05e4"
+            color_threshold:
+              - value: 0
+                opacity: 1
+                color: "#6700a7"
+              - value: -1
+                opacity: 1
+                color: "#46a635"
+          - entity: sensor.marstek_m1_daily_charging_energy
+            yaxis_id: header_only
+            name: Vandaag (geladen)
+            show:
+              in_header: true
+              in_chart: false
+          - entity: sensor.marstek_m1_daily_discharging_energy
+            yaxis_id: header_only
+            name: Vandaag (ontladen)
+            show:
+              in_header: true
+              in_chart: false
+          - entity: sensor.marstek_m1_battery_state_of_charge
+            yaxis_id: header_only
+            name: SOC
+            show:
+              in_header: true
+              in_chart: false
+        span:
+          start: day
+        apex_config:
+          stroke:
+            show: true
+            dashArray: 0
+          tooltip:
+            x:
+              format: HH:mm
+              show: false
+          xaxis:
+            labels:
+              show: false
+              style:
+                colors: grey
+            axisTicks:
+              show: false
+            axisBorder:
+              color: "#616269"
+          yaxis:
+            - title:
+                text: ""
+              decimalsInFloat: 0
+              min: 0
+              max: 100
+              tickAmount: 6
+              opposite: true
+              labels:
+                show: false
+                style:
+                  colors: "#7b7c83"
+            - title:
+                text: ""
+              decimalsInFloat: 0
+              min: -2500
+              max: 2500
+              tickAmount: 10
+              labels:
+                style:
+                  colors: "#616269"
+          grid:
+            strokeDashArray: 0
+            borderColor: "#343434"
+            show: true
+          chart:
+            height: 210px
+          legend:
+            show: false
+      - type: custom:apexcharts-card
+        header:
+          title: My Battery Status - Laatste 7 Dagen
+          show: true
+        graph_span: 7d
+        yaxis:
+          - id: first
+            min: 0
+            max: 6
+            decimals: 0
+            apex_config:
+              tickAmount: 6
+          - id: second
+            min: 0
+            max: 100
+            opposite: true
+            decimals: 0
+            apex_config:
+              tickAmount: 10
+        span:
+          start: day
+          offset: "-6d"
+        series:
+          - entity: sensor.marstek_m1_daily_charging_energy
+            name: Lading (kWh)
+            type: column
+            color: "#FF4500"
+            group_by:
+              func: last
+              duration: 1d
+            show:
+              in_header: true
+              legend_value: true
+            yaxis_id: first
+          - entity: sensor.marstek_m1_daily_discharging_energy
+            name: Ontlading (kWh)
+            type: column
+            color: "#CCD500"
+            group_by:
+              func: last
+              duration: 1d
+            show:
+              in_header: true
+              legend_value: true
+            yaxis_id: first
+        apex_config:
+          xaxis:
+            title:
+              text: Datum
+            type: datetime
+          plotOptions:
+            bar:
+              horizontal: false
+          dataLabels:
+            enabled: false
+          stroke:
+            show: true
+            width: 2
+          tooltip:
+            enabled: true
+            shared: true
+          grid:
+            show: true
+  - type: entities
+    entities:
+      - entity: sensor.marstek_m1_inverter_state
+        name: Inverter State
+      - entity: sensor.marstek_m1_ac_power
+        name: AC Power
+      - entity: sensor.marstek_m1_ac_voltage
+        name: AC Voltage
+      - entity: sensor.marstek_m1_battery_charge_current_limit
+        name: Battery Charge Current Limit
+      - entity: sensor.marstek_m1_battery_charge_voltage_limit
+        name: Battery Charge Voltage Limit
+      - entity: sensor.marstek_m1_battery_discharge_current_limit
+        name: Battery Discharge Current Limit
+      - entity: sensor.marstek_m1_battery_power
+        name: Battery Power
+      - entity: sensor.marstek_m1_battery_remaining_capacity
+        name: Battery Remaining Capacity
+      - entity: sensor.marstek_m1_battery_state_of_charge
+        name: Battery State Of Charge
+      - entity: sensor.marstek_m1_battery_total_energy
+        name: Battery Total Energy
+      - entity: sensor.marstek_m1_internal_mos1_temperature
+        name: Internal MOS1 Temperature
+      - entity: sensor.marstek_m1_internal_mos2_temperature
+        name: Internal MOS2 Temperature
+      - entity: sensor.marstek_m1_internal_temperature
+        name: Internal Temperature
+      - entity: sensor.marstek_m1_max_cell_temperature
+        name: Max. Cell Temperature
+      - entity: sensor.marstek_m1_min_cell_temperature
+        name: Min. Cell Temperature
+      - entity: sensor.marstek_m1_daily_charging_energy
+        name: Daily Charging Energy
+      - entity: sensor.marstek_m1_daily_discharging_energy
+        name: Daily Discharging Energy
+      - entity: sensor.marstek_m1_monthly_charging_energy
+        name: Monthly Charging Energy
+      - entity: sensor.marstek_m1_monthly_discharging_energy
+        name: Monthly Discharging Energy
+      - entity: sensor.marstek_m1_lifetime_charging_energy
+        name: Lifetime Charging Energy
+      - entity: sensor.marstek_m1_lifetime_discharging_energy
+        name: Lifetime Discharging Energy
+      - entity: sensor.marstek_m1_battery_cell_1_voltage
+        name: Battery Cell 1 Voltage
+      - entity: sensor.marstek_m1_battery_cell_2_voltage
+        name: Battery Cell 2 Voltage
+      - entity: sensor.marstek_m1_battery_cell_3_voltage
+        name: Battery Cell 3 Voltage
+      - entity: sensor.marstek_m1_battery_cell_4_voltage
+        name: Battery Cell 4 Voltage
+      - entity: sensor.marstek_m1_battery_cell_5_voltage
+        name: Battery Cell 5 Voltage
+      - entity: sensor.marstek_m1_battery_cell_6_voltage
+        name: Battery Cell 6 Voltage
+      - entity: sensor.marstek_m1_battery_cell_7_voltage
+        name: Battery Cell 7 Voltage
+      - entity: sensor.marstek_m1_battery_cell_8_voltage
+        name: Battery Cell 8 Voltage
+      - entity: sensor.marstek_m1_battery_cell_9_voltage
+        name: Battery Cell 8 Voltage
+      - entity: sensor.marstek_m1_battery_cell_10_voltage
+        name: Battery Cell 10 Voltage
+      - entity: sensor.marstek_m1_battery_cell_11_voltage
+        name: Battery Cell 11 Voltage
+      - entity: sensor.marstek_m1_battery_cell_12_voltage
+        name: Battery Cell 12 Voltage
+      - entity: sensor.marstek_m1_battery_cell_13_voltage
+        name: Battery Cell 13 Voltage
+      - entity: sensor.marstek_m1_battery_cell_14_voltage
+        name: Battery Cell 14 Voltage
+      - entity: sensor.marstek_m1_battery_cell_15_voltage
+        name: Battery Cell 15 Voltage
+      - entity: sensor.marstek_m1_battery_cell_16_voltage
+        name: Battery Cell 16 Voltage
+    title: MT1
+  - type: entities
+    entities:
+      - entity: select.marstek_m1_rs485_control_mode
+        name: RS485 Control Mode
+      - entity: select.marstek_m1_user_work_mode
+        name: User Work Mode
+      - entity: select.marstek_m1_forcible_charge_discharge
+        name: Forcible Charge/Discharge
+      - entity: number.marstek_m1_forcible_discharge_power
+        name: Forcible Discharge Power
+      - entity: number.marstek_m1_forcible_charge_power
+        name: Forcible Charge Power
+      - entity: number.marstek_m1_max_charge_power
+        name: Max. Charge Power
+      - entity: number.marstek_m1_max_discharge_power
+        name: Max. Discharge Power
+      - entity: select.marstek_m1_backup_function
+        name: Backup Function
+      - entity: number.marstek_m1_charge_to_soc
+        name: Charge To SOC
+    title: MT1
+  - type: entities
+    entities:
+      - entity: sensor.marstek_m1_device_name
+        name: Device Name
+      - entity: sensor.marstek_m1_battery_wifi_signal_strength
+        name: Battery WiFi Signal Strength
+      - entity: sensor.marstek_m1_wifi_state
+        name: Wifi state
+      - entity: sensor.marstek_m1_bt_state
+        name: BT state
+      - entity: sensor.marstek_m1_cloud_state
+        name: Cloud state
+      - entity: sensor.marstek_m1_ems_version
+        name: EMS version
+      - entity: sensor.marstek_m1_vns_version
+        name: VNS version
+      - entity: sensor.marstek_m1_bms_version
+        name: BMS Version
+      - entity: sensor.marstek_m1_com_module_version
+        name: COM module version
+      - entity: sensor.marstek_m1_mac
+        name: MAC
+    title: MT1
