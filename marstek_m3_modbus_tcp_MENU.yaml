@@ -257,10 +257,14 @@ cards:
         name: Monthly Charging Energy
       - entity: sensor.marstek_m3_monthly_discharging_energy
         name: Monthly Discharging Energy
+      - entity: sensor.marstek_m3_monthly_round_trip_efficiency
+        name: Monthly Round Trip Efficiency
       - entity: sensor.marstek_m3_lifetime_charging_energy
         name: Lifetime Charging Energy
       - entity: sensor.marstek_m3_lifetime_discharging_energy
         name: Lifetime Discharging Energy
+      - entity: sensor.marstek_m3_lifetime_round_trip_efficiency
+        name: Lifetime Round Trip Efficiency
       - entity: sensor.marstek_m3_battery_cell_1_voltage
         name: Battery Cell 1 Voltage
       - entity: sensor.marstek_m3_battery_cell_2_voltage
@@ -338,3 +342,4 @@ cards:
       - entity: sensor.marstek_m3_mac
         name: MAC
     title: MT3
+
