@@ -5,7 +5,7 @@
 # Fork of https://github.com/Superduper1969/MarstekVenus-ElfinEW11
 # -----------------------------------------------------------------
 # Use this file for the first Marstek Venus.
-# change host: [YOURIPADRESS] to host: 192.168.0.245 (for example)
+# change host: [YOURIPADDRESS] to host: 192.168.0.245 (for example)
 # -----------------------------------------------------------------
 
 # ------
@@ -1153,3 +1153,4 @@ template:
         max: 2500
 
         optimistic: true
+
