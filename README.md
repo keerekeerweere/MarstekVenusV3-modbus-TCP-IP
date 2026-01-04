@@ -7,7 +7,7 @@ homeassistant:
   packages: !include_dir_named packages
 ```
 * Create a subfolder called packages and copy the "marstek_m1_modbus_tcp.yaml" file from this repo to the folder => /config/packages/marstek_m1_modbus_tcp.yaml
-Change [IPADRESS] in the yaml to your own marstek battery IP adress.
+Change [YOURIPADDRESS] in the yaml to your own marstek battery IP adress.
 
 * Restart your Home Assistant.
 
