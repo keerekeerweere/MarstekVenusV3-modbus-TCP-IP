@@ -71,7 +71,7 @@ cards:
             show:
               in_header: false
           - entity: sensor.marstek_m3_ac_power
-            name: HW Batterij
+            name: M3 Battery
             group_by:
               func: avg
               duration: 15min
@@ -342,4 +342,5 @@ cards:
       - entity: sensor.marstek_m3_mac
         name: MAC
     title: MT3
+
 
