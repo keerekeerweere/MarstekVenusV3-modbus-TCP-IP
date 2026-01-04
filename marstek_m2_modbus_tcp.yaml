@@ -1151,4 +1151,5 @@ template:
         step: 1
         min: 0
         max: 2500
+
         optimistic: true
