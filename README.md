@@ -21,6 +21,9 @@ For the graphics inside the menu go to HACS (if installed) and install apexchart
 * For more batterys then one - use upfollowing yaml files (m2 - m3 - m4)
 
 
+
+
+
 > [!TIP]
 > To control the battery(s) using NodeRed have a look [here.](https://github.com/gitcodebob/marstek-venus-rs485-node-red)
 
