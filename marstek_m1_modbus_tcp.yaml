@@ -176,7 +176,7 @@ modbus:
         precision: 0
 
       - name: "Marstek m1 Battery State Of Charge Number"
-        unique_id: marstek_m1_battery_state_of_charge_mumber
+        unique_id: marstek_m1_battery_state_of_charge_number
         address: 32104
         slave: 1
         scan_interval: 30
@@ -1153,4 +1153,5 @@ template:
         max: 2500
 
         optimistic: true
+
 
