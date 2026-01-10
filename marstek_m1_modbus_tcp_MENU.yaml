@@ -8,7 +8,7 @@ cards:
       - type: horizontal-stack
         cards:
           - type: gauge
-            entity: sensor.p1_meter_active_power
+            entity: sensor.p1_meter_power
             name: P1 meter
             needle: true
             max: 6000
