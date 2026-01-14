@@ -282,7 +282,7 @@ cards:
       - entity: sensor.marstek_m1_battery_cell_8_voltage
         name: Battery Cell 8 Voltage
       - entity: sensor.marstek_m1_battery_cell_9_voltage
-        name: Battery Cell 8 Voltage
+        name: Battery Cell 9 Voltage
       - entity: sensor.marstek_m1_battery_cell_10_voltage
         name: Battery Cell 10 Voltage
       - entity: sensor.marstek_m1_battery_cell_11_voltage
