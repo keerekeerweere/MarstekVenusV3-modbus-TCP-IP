@@ -632,9 +632,9 @@ modbus:
         unit_of_measurement: °C
         device_class: temperature
         state_class: measurement
-        scale: 1
+        scale: 0.1
         offset: 0
-        precision: 0
+        precision: 1
 
       - name: "Marstek m1 Min Cell Temperature"
         unique_id: marstek_m1_min_cell_temperature
@@ -646,9 +646,9 @@ modbus:
         unit_of_measurement: °C
         device_class: temperature
         state_class: measurement
-        scale: 1
+        scale: 0.1
         offset: 0
-        precision: 0
+        precision: 1
 
       - name: "Marstek m1 Inverter State Number"
         unique_id: marstek_m1_inverter_state_number
