@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------
 # Home Assistant Marstek V3 - Modbus TCP/IP direct through ethernet
-# Version: 1.1
+# Version: 1.2
 # Note: Only for EMS V144 or higher
 # Fork of https://github.com/Superduper1969/MarstekVenus-ElfinEW11
 # -----------------------------------------------------------------
@@ -859,44 +859,68 @@ template:
         unique_id: marstek_m3_wifi_state
         icon: mdi:wifi-alert
         state: >
+          {% set raw = states('sensor.marstek_m3_wifi_state_number') %}
           {% set mapping = {
-            0:'Disconnected',
-            1:'Connected' } %}
-          {{ mapping[states('sensor.marstek_m3_wifi_state_number') | int] }}
+            0: 'Disconnected',
+            1: 'Connected'
+          } %}
+          {% if raw not in ['unknown', 'unavailable', ''] %}
+            {{ mapping.get(raw | int, 'Unknown') }}
+          {% else %}
+            unknown
+          {% endif %}
 
-      - name: "Marstek m3 BT state"
+      - name: "Marstek m3 BT State"
         unique_id: marstek_m3_bt_state
         icon: mdi:home-heart
         state: >
+          {% set raw = states('sensor.marstek_m3_bt_state_number') %}
           {% set mapping = {
-            0:'Disconnected',
-            1:'Connected after reboot',
-            2:'Connected',
-            3:'Active' } %}
-          {{ mapping[states('sensor.marstek_m3_bt_state_number') | int] }}
+            0: 'Disconnected',
+            1: 'Connected after reboot',
+            2: 'Connected',
+            3: 'Active'
+          } %}
+          {% if raw not in ['unknown', 'unavailable', ''] %}
+            {{ mapping.get(raw | int, 'Unknown') }}
+          {% else %}
+            unknown
+          {% endif %}
 
-      - name: "Marstek m3 Cloud state"
+      - name: "Marstek m3 Cloud State"
         unique_id: marstek_m3_cloud_state
-        icon: mdi:home-heart
+        icon: mdi:cloud-outline
         state: >
+          {% set raw = states('sensor.marstek_m3_cloud_state_number') %}
           {% set mapping = {
-            0:'Disconnected',
-            1:'Connected' } %}
-          {{ mapping[states('sensor.marstek_m3_cloud_state_number') | int] }}
+            0: 'Disconnected',
+            1: 'Connected'
+          } %}
+          {% if raw not in ['unknown', 'unavailable', ''] %}
+            {{ mapping.get(raw | int, 'Unknown') }}
+          {% else %}
+            unknown
+          {% endif %}
 
       - name: "Marstek m3 Inverter State"
         unique_id: marstek_m3_inverter_state
         icon: mdi:state-machine
         state: >
+          {% set raw = states('sensor.marstek_m3_inverter_state_number') %}
           {% set mapping = {
-            0:'Sleep',
-            1:'Standby',
-            2:'Charge',
-            3:'Discharge',
-            4:'Fault',
-            5:'Idle',
-            6:'AC bypass' } %}
-          {{ mapping[states('sensor.marstek_m3_inverter_state_number') | int] }}
+            0: 'Sleep',
+            1: 'Standby',
+            2: 'Charge',
+            3: 'Discharge',
+            4: 'Fault',
+            5: 'Idle',
+            6: 'AC bypass'
+          } %}
+          {% if raw not in ['unknown', 'unavailable', ''] %}
+            {{ mapping.get(raw | int, 'Unknown state') }}
+          {% else %}
+            unknown
+          {% endif %}
 
       - name: "Marstek m3 Battery Cell Voltage Delta"
         unique_id: marstek_m3_battery_cell_voltage_delta
@@ -905,9 +929,13 @@ template:
         device_class: voltage
         state_class: measurement
         state: >
-          {% set sens1= states('sensor.marstek_m3_battery_maximum_cell_voltage') | float(default=0) * 1000 %}
-          {% set sens2= states('sensor.marstek_m3_battery_minimum_cell_voltage') | float(default=0) * 1000 %}
-          {{ (sens1 - sens2) | round(0) }}
+          {% set max_v = states('sensor.marstek_m3_battery_maximum_cell_voltage') %}
+          {% set min_v = states('sensor.marstek_m3_battery_minimum_cell_voltage') %}
+          {% if max_v not in ['unknown', 'unavailable', ''] and min_v not in ['unknown', 'unavailable', ''] %}
+            {{ ((max_v | float) - (min_v | float)) * 1000 | round(0) | int }}
+          {% else %}
+            unknown
+          {% endif %}
 
       - name: "Marstek m3 Lifetime Round Trip Efficiency"
         unique_id: marstek_m3_lifetime_round_trip_efficiency
@@ -915,12 +943,18 @@ template:
         unit_of_measurement: "%"
         state_class: measurement
         state: >
-          {% set charging = states('sensor.marstek_m3_lifetime_charging_energy') | float(0) %}
-          {% set discharging = states('sensor.marstek_m3_lifetime_discharging_energy') | float(0) %}
-          {% if charging > 0 %}
-            {{ ((discharging / charging) * 100) | float(0) | round(2) }}
+          {% set charging_raw = states('sensor.marstek_m3_lifetime_charging_energy') %}
+          {% set discharging_raw = states('sensor.marstek_m3_lifetime_discharging_energy') %}
+          {% if charging_raw not in ['unknown','unavailable',''] and discharging_raw not in ['unknown','unavailable',''] %}
+            {% set charging = charging_raw | float %}
+            {% set discharging = discharging_raw | float %}
+            {% if charging > 0 %}
+              {{ ((discharging / charging) * 100) | round(2) }}
+            {% else %}
+              unknown
+            {% endif %}
           {% else %}
-            0
+            unknown
           {% endif %}
 
       - name: "Marstek m3 Monthly Round Trip Efficiency"
@@ -929,12 +963,18 @@ template:
         unit_of_measurement: "%"
         state_class: measurement
         state: >
-          {% set charging = states('sensor.marstek_m3_monthly_charging_energy') | float(0) %}
-          {% set discharging = states('sensor.marstek_m3_monthly_discharging_energy') | float(0) %}
-          {% if charging > 0 %}
-            {{ ((discharging / charging) * 100) | float(0) | round(2) }}
+          {% set charging_raw = states('sensor.marstek_m3_monthly_charging_energy') %}
+          {% set discharging_raw = states('sensor.marstek_m3_monthly_discharging_energy') %}
+          {% if charging_raw not in ['unknown','unavailable',''] and discharging_raw not in ['unknown','unavailable',''] %}
+            {% set charging = charging_raw | float %}
+            {% set discharging = discharging_raw | float %}
+            {% if charging > 0 %}
+              {{ ((discharging / charging) * 100) | round(2) }}
+            {% else %}
+              0
+            {% endif %}
           {% else %}
-            0
+            unknown
           {% endif %}
 
       - name: "Marstek m3 Battery Remaining Capacity"
@@ -944,16 +984,17 @@ template:
         state_class: measurement
         device_class: energy_storage
         state: >
-          {% set maxbat = 5 | float(default=0) %}
-          {% set currentsoc= 11.0 | float(default=0) %}
-          {% if has_value('sensor.marstek_m3_battery_total_energy') %}
-            {% set maxbat= (states("sensor.marstek_m3_battery_total_energy") | float(default=0) * 1006) | round(0) %}
+          {% set maxbat_raw = states('sensor.marstek_m3_battery_total_energy') %}
+          {% set soc_raw = states('sensor.marstek_m3_battery_state_of_charge') %}
+
+          {% if maxbat_raw not in ['unknown','unavailable',''] and soc_raw not in ['unknown','unavailable',''] %}
+            {% set maxbat = maxbat_raw | float %}
+            {% set currentsoc = soc_raw | float %}
+            {% set currentbat = (currentsoc / 100 * maxbat) | round(2) %}
+            {{ currentbat }}
+          {% else %}
+            unknown
           {% endif %}
-          {% if has_value('sensor.marstek_m3_battery_state_of_charge') %}
-            {% set currentsoc= states("sensor.marstek_m3_battery_state_of_charge") | float(default=0) | round(1) %}
-          {% endif %}
-          {% set currentbat= ((currentsoc / 100 | float(default=0) * (maxbat )) /1000 | float(default=0)) | round(2) %}
-          {{ currentbat }}
 
 # ---------------
 # TEMPLATE SELECT
