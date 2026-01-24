@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------
 # Home Assistant Marstek V3 - Modbus TCP/IP direct through ethernet
-# Version: 1.2
+# Version: 1.3
 # Note: Only for EMS V144 or higher
 # Fork of https://github.com/Superduper1969/MarstekVenus-ElfinEW11
 # -----------------------------------------------------------------
@@ -175,9 +175,9 @@ modbus:
         offset: 0
         precision: 0
 
-      - name: "Marstek m2 Battery State Of Charge"
+      - name: "Marstek m2 Battery State Of Charge"  # Venus E v3 only
         unique_id: marstek_m2_battery_state_of_charge
-        address: 32104
+        address: 34002
         slave: 1
         scan_interval: 30
         input_type: holding
@@ -185,9 +185,23 @@ modbus:
         unit_of_measurement: "%"
         device_class: battery
         state_class: measurement
-        scale: 1
+        scale: 0.1
         offset: 0
-        precision: 0
+        precision: 1
+        
+#      - name: "Marstek m1 Battery State Of Charge"
+#        unique_id: marstek_m1_battery_state_of_charge
+#        address: 32104
+#        slave: 1
+#        scan_interval: 30
+#        input_type: holding
+#        data_type: uint16
+#        unit_of_measurement: "%"
+#        device_class: battery
+#        state_class: measurement
+#        scale: 1
+#        offset: 0
+#        precision: 0
 
       - name: "Marstek m2 Battery Total Energy"
         unique_id: marstek_m2_battery_total_energy
@@ -1232,4 +1246,5 @@ homeassistant:
     sensor.marstek_m2_battery_cell_15_voltage:
       icon: mdi:current-dc
     sensor.marstek_m2_battery_cell_16_voltage:
+
       icon: mdi:current-dc
