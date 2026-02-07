@@ -244,6 +244,20 @@ modbus:
         scale: 1
         offset: 0
         precision: 0
+        
+      - name: "Marstek m3 AC Power kW"
+        unique_id: marstek_m3_ac_power_kw
+        address: 32202
+        slave: 1
+        scan_interval: 10
+        input_type: holding
+        data_type: int32
+        unit_of_measurement: kW
+        device_class: power
+        state_class: measurement
+        scale: 0.001
+        offset: 0
+        precision: 3
 
       - name: "Marstek m3 AC Frequency"
         unique_id: marstek_m3_ac_frequency
