@@ -50,7 +50,6 @@ sensor:
     register_type: holding
     value_type: U_WORD
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 BT state number"
@@ -59,7 +58,6 @@ sensor:
     register_type: holding
     value_type: U_WORD
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Cloud state number"
@@ -68,7 +66,6 @@ sensor:
     register_type: holding
     value_type: U_WORD
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Wifi Signal Strength"
@@ -82,7 +79,6 @@ sensor:
     filters:
       - multiply: -1
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 EMS version"
@@ -92,7 +88,6 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 0
     skip_updates: 59
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 VNS version"
@@ -102,7 +97,6 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 0
     skip_updates: 59
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 BMS version"
@@ -112,7 +106,6 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 0
     skip_updates: 59
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Voltage"
@@ -126,7 +119,6 @@ sensor:
     filters:
       - multiply: 0.01
     skip_updates: 1
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Current"
@@ -140,7 +132,6 @@ sensor:
     filters:
       - multiply: 0.01
     skip_updates: 1
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Power"
@@ -152,7 +143,6 @@ sensor:
     device_class: power
     accuracy_decimals: 0
     skip_updates: 1
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery State Of Charge"  # Venus E v3 only"
@@ -166,7 +156,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Total Energy"
@@ -179,7 +168,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 AC Voltage"
@@ -193,7 +181,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 AC Power"
@@ -205,7 +192,6 @@ sensor:
     device_class: power
     accuracy_decimals: 0
     skip_updates: 1
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 AC Power kW"
@@ -219,7 +205,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 1
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 AC Frequency"
@@ -233,7 +218,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Lifetime Charging Energy"
@@ -247,7 +231,6 @@ sensor:
     filters:
       - multiply: 0.01
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Lifetime Discharging Energy"
@@ -261,7 +244,6 @@ sensor:
     filters:
       - multiply: 0.01
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Daily Charging Energy"
@@ -275,7 +257,6 @@ sensor:
     filters:
       - multiply: 0.01
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Daily Discharging Energy"
@@ -289,7 +270,6 @@ sensor:
     filters:
       - multiply: 0.01
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 monthly Charging Energy"
@@ -303,7 +283,6 @@ sensor:
     filters:
       - multiply: 0.01
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Monthly Discharging Energy"
@@ -317,7 +296,6 @@ sensor:
     filters:
       - multiply: 0.01
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 1 Voltage"
@@ -330,7 +308,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 2 Voltage"
@@ -343,7 +320,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 3 Voltage"
@@ -356,7 +332,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 4 Voltage"
@@ -369,7 +344,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 5 Voltage"
@@ -382,7 +356,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 6 Voltage"
@@ -395,7 +368,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 7 Voltage"
@@ -408,7 +380,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 8 Voltage"
@@ -421,7 +392,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 9 Voltage"
@@ -434,7 +404,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 10 Voltage"
@@ -447,7 +416,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 11 Voltage"
@@ -460,7 +428,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 12 Voltage"
@@ -473,7 +440,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 13 Voltage"
@@ -486,7 +452,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 14 Voltage"
@@ -499,7 +464,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 15 Voltage"
@@ -512,7 +476,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Cell 16 Voltage"
@@ -525,7 +488,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Internal Temperature"
@@ -539,7 +501,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Internal MOS1 Temperature"
@@ -553,7 +514,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 119
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Internal MOS2 Temperature"
@@ -567,7 +527,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 119
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Max Cell Temperature"
@@ -581,7 +540,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Min Cell Temperature"
@@ -595,7 +553,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 5
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Inverter State Number"
@@ -603,7 +560,6 @@ sensor:
     address: 35100
     register_type: holding
     value_type: U_WORD
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Charge Voltage Limit"
@@ -616,7 +572,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 17
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Charge Current Limit"
@@ -629,7 +584,6 @@ sensor:
     filters:
       - multiply: 0.1
     skip_updates: 17
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Discharge Current Limit"
@@ -642,7 +596,6 @@ sensor:
     filters:
       - multiply: 0.01
     skip_updates: 17
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Maximum Cell Voltage"
@@ -655,7 +608,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 17
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Battery Minimum Cell Voltage"
@@ -668,7 +620,6 @@ sensor:
     filters:
       - multiply: 0.001
     skip_updates: 17
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Backup Function Number"
@@ -677,7 +628,6 @@ sensor:
     register_type: holding
     value_type: U_WORD
     accuracy_decimals: 0
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 RS485 Control Mode Number"
@@ -686,7 +636,6 @@ sensor:
     register_type: holding
     value_type: U_WORD
     accuracy_decimals: 0
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Forcible Charge Discharge Number"
@@ -695,7 +644,6 @@ sensor:
     register_type: holding
     value_type: U_WORD
     accuracy_decimals: 0
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Charge To SOC Number"
@@ -705,7 +653,6 @@ sensor:
     value_type: U_WORD
     unit_of_measurement: "%"
     accuracy_decimals: 0
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Forcible Charge Power Number"
@@ -715,7 +662,6 @@ sensor:
     value_type: U_WORD
     unit_of_measurement: W
     accuracy_decimals: 0
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Forcible Discharge Power Number"
@@ -725,7 +671,6 @@ sensor:
     value_type: U_WORD
     unit_of_measurement: W
     accuracy_decimals: 0
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 User Work Mode number"
@@ -735,7 +680,6 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 0
     skip_updates: 1
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Max Charge Power Number"
@@ -746,7 +690,6 @@ sensor:
     unit_of_measurement: W
     accuracy_decimals: 0
     skip_updates: 1
-
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 Max Discharge Power Number"
@@ -757,7 +700,6 @@ sensor:
     unit_of_measurement: W
     accuracy_decimals: 0
     skip_updates: 1
-
   - platform: template
     name: "Marstek m2 Battery Cell Voltage Delta"
     id: marstek_m2_battery_cell_voltage_delta
@@ -770,7 +712,6 @@ sensor:
       const float min_v = id(marstek_m2_battery_minimum_cell_voltage).state;
       if (isnan(max_v) || isnan(min_v)) return NAN;
       return (max_v - min_v) * 1000.0f;
-
   - platform: template
     name: "Marstek m2 Lifetime Round Trip Efficiency"
     id: marstek_m2_lifetime_round_trip_efficiency
@@ -782,7 +723,6 @@ sensor:
       const float discharging = id(marstek_m2_lifetime_discharging_energy).state;
       if (isnan(charging) || isnan(discharging) || charging <= 0.0f) return NAN;
       return (discharging / charging) * 100.0f;
-
   - platform: template
     name: "Marstek m2 Monthly Round Trip Efficiency"
     id: marstek_m2_monthly_round_trip_efficiency
@@ -795,7 +735,6 @@ sensor:
       if (isnan(charging) || isnan(discharging)) return NAN;
       if (charging <= 0.0f) return 0.0f;
       return (discharging / charging) * 100.0f;
-
   - platform: template
     name: "Marstek m2 Battery Remaining Capacity"
     id: marstek_m2_battery_remaining_capacity
@@ -810,14 +749,16 @@ sensor:
       return (soc / 100.0f) * maxbat;
 
 
+
+text_sensor:
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 MAC"
     id: marstek_m2_mac
     address: 30304
     register_type: holding
-    value_type: U_WORD
     register_count: 6
+    raw_encode: false
     skip_updates: 59
 
   - platform: modbustcp_controller
@@ -826,8 +767,8 @@ sensor:
     id: marstek_m2_com_module_version
     address: 30350
     register_type: holding
-    value_type: U_WORD
     register_count: 6
+    raw_encode: false
     skip_updates: 59
 
   - platform: modbustcp_controller
@@ -836,38 +777,63 @@ sensor:
     id: marstek_m2_device_name
     address: 31000
     register_type: holding
-    value_type: U_WORD
     register_count: 10
+    raw_encode: false
     skip_updates: 59
+
+
 
   - platform: template
     name: "Marstek m2 Wifi State"
     id: marstek_m2_wifi_state
     update_interval: 30s
     lambda: |-
-      return id(marstek_m2_wifi_state_number).state;
-
+      if (isnan(id(marstek_m2_wifi_state_number).state)) return std::string("unknown");
+      switch ((int) id(marstek_m2_wifi_state_number).state) {
+        case 0: return std::string("Disconnected");
+        case 1: return std::string("Connected");
+        default: return std::string("Unknown");
+      }
   - platform: template
     name: "Marstek m2 BT State"
     id: marstek_m2_bt_state
     update_interval: 30s
     lambda: |-
-      return id(marstek_m2_bt_state_number).state;
-
+      if (isnan(id(marstek_m2_bt_state_number).state)) return std::string("unknown");
+      switch ((int) id(marstek_m2_bt_state_number).state) {
+        case 0: return std::string("Disconnected");
+        case 1: return std::string("Connected after reboot");
+        case 2: return std::string("Connected");
+        case 3: return std::string("Active");
+        default: return std::string("Unknown");
+      }
   - platform: template
     name: "Marstek m2 Cloud State"
     id: marstek_m2_cloud_state
     update_interval: 30s
     lambda: |-
-      return id(marstek_m2_cloud_state_number).state;
-
+      if (isnan(id(marstek_m2_cloud_state_number).state)) return std::string("unknown");
+      switch ((int) id(marstek_m2_cloud_state_number).state) {
+        case 0: return std::string("Disconnected");
+        case 1: return std::string("Connected");
+        default: return std::string("Unknown");
+      }
   - platform: template
     name: "Marstek m2 Inverter State"
     id: marstek_m2_inverter_state
     update_interval: 30s
     lambda: |-
-      return id(marstek_m2_inverter_state_number).state;
-
+      if (isnan(id(marstek_m2_inverter_state_number).state)) return std::string("unknown");
+      switch ((int) id(marstek_m2_inverter_state_number).state) {
+        case 0: return std::string("Sleep");
+        case 1: return std::string("Standby");
+        case 2: return std::string("Charge");
+        case 3: return std::string("Discharge");
+        case 4: return std::string("Fault");
+        case 5: return std::string("Idle");
+        case 6: return std::string("AC bypass");
+        default: return std::string("Unknown state");
+      }
 select:
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
@@ -876,9 +842,13 @@ select:
     address: 42000
     register_type: holding
     value_type: U_WORD
-    optionsmap:
-      "disable": 21947
-      "enable": 21930
+    options:
+      - "disable"
+      - "enable"
+    option_values:
+      - 21947
+      - 21930
+
 
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
@@ -887,10 +857,15 @@ select:
     address: 43000
     register_type: holding
     value_type: U_WORD
-    optionsmap:
-      "manual": 0
-      "anti-feed": 1
-      "ai": 2
+    options:
+      - "manual"
+      - "anti-feed"
+      - "ai"
+    option_values:
+      - 0
+      - 1
+      - 2
+
 
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
@@ -899,10 +874,15 @@ select:
     address: 42010
     register_type: holding
     value_type: U_WORD
-    optionsmap:
-      "stop": 0
-      "charge": 1
-      "discharge": 2
+    options:
+      - "stop"
+      - "charge"
+      - "discharge"
+    option_values:
+      - 0
+      - 1
+      - 2
+
 
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
@@ -911,9 +891,13 @@ select:
     address: 41200
     register_type: holding
     value_type: U_WORD
-    optionsmap:
-      "enable": 0
-      "disable": 1
+    options:
+      - "enable"
+      - "disable"
+    option_values:
+      - 0
+      - 1
+
 
 
 number:
