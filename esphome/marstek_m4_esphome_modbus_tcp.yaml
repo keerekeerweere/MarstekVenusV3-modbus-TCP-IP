@@ -27,23 +27,23 @@ ota:
 
 external_components:
   - source: github://keerekeerweere/esphome_modbus_tcp
-    components: [modbus]
+    components: [modbustcp, modbustcp_controller]
 
-modbus:
+modbustcp:
   - id: marstek_m4_modbus
     host: !secret marstek_m4_ip
     port: 502
     send_wait_time: 35ms
 
-modbus_controller:
+modbustcp_controller:
   - id: marstek_m4_controller
-    modbus_id: marstek_m4_modbus
+    modbustcp_id: marstek_m4_modbus
     address: 1
     update_interval: 5s
 
 sensor:
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Wifi state number"
     id: marstek_m4_wifi_state_number
     address: 30300
@@ -51,8 +51,8 @@ sensor:
     value_type: U_WORD
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 BT state number"
     id: marstek_m4_bt_state_number
     address: 30301
@@ -60,8 +60,8 @@ sensor:
     value_type: U_WORD
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Cloud state number"
     id: marstek_m4_cloud_state_number
     address: 30302
@@ -69,8 +69,8 @@ sensor:
     value_type: U_WORD
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Wifi Signal Strength"
     id: marstek_m4_battery_wifi_signal_strength
     address: 30303
@@ -83,8 +83,8 @@ sensor:
       - multiply: -1
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 EMS version"
     id: marstek_m4_ems_version
     address: 30200
@@ -93,8 +93,8 @@ sensor:
     accuracy_decimals: 0
     skip_updates: 59
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 VNS version"
     id: marstek_m4_vns_version
     address: 30202
@@ -103,8 +103,8 @@ sensor:
     accuracy_decimals: 0
     skip_updates: 59
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 BMS version"
     id: marstek_m4_bms_version
     address: 30204
@@ -113,8 +113,8 @@ sensor:
     accuracy_decimals: 0
     skip_updates: 59
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Voltage"
     id: marstek_m4_battery_voltage
     address: 30100
@@ -127,8 +127,8 @@ sensor:
       - multiply: 0.01
     skip_updates: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Current"
     id: marstek_m4_battery_current
     address: 30101
@@ -141,8 +141,8 @@ sensor:
       - multiply: 0.01
     skip_updates: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Power"
     id: marstek_m4_battery_power
     address: 30001
@@ -153,8 +153,8 @@ sensor:
     accuracy_decimals: 0
     skip_updates: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery State Of Charge"  # Venus E v3 only"
     id: marstek_m4_battery_state_of_charge
     address: 34002
@@ -167,8 +167,8 @@ sensor:
       - multiply: 0.1
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Total Energy"
     id: marstek_m4_battery_total_energy
     address: 32105
@@ -180,8 +180,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 AC Voltage"
     id: marstek_m4_ac_voltage
     address: 32200
@@ -194,8 +194,8 @@ sensor:
       - multiply: 0.1
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 AC Power"
     id: marstek_m4_ac_power
     address: 32202
@@ -206,8 +206,8 @@ sensor:
     accuracy_decimals: 0
     skip_updates: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 AC Power kW"
     id: marstek_m4_ac_power_kw
     address: 32202
@@ -220,8 +220,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 AC Frequency"
     id: marstek_m4_ac_frequency
     address: 32204
@@ -234,8 +234,8 @@ sensor:
       - multiply: 0.1
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Lifetime Charging Energy"
     id: marstek_m4_lifetime_charging_energy
     address: 33000
@@ -248,8 +248,8 @@ sensor:
       - multiply: 0.01
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Lifetime Discharging Energy"
     id: marstek_m4_lifetime_discharging_energy
     address: 33002
@@ -262,8 +262,8 @@ sensor:
       - multiply: 0.01
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Daily Charging Energy"
     id: marstek_m4_daily_charging_energy
     address: 33004
@@ -276,8 +276,8 @@ sensor:
       - multiply: 0.01
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Daily Discharging Energy"
     id: marstek_m4_daily_discharging_energy
     address: 33006
@@ -290,8 +290,8 @@ sensor:
       - multiply: 0.01
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 monthly Charging Energy"
     id: marstek_m4_monthly_charging_energy
     address: 33008
@@ -304,8 +304,8 @@ sensor:
       - multiply: 0.01
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Monthly Discharging Energy"
     id: marstek_m4_monthly_discharging_energy
     address: 33010
@@ -318,8 +318,8 @@ sensor:
       - multiply: 0.01
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 1 Voltage"
     id: marstek_m4_battery_cell_1_voltage
     address: 34018
@@ -331,8 +331,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 2 Voltage"
     id: marstek_m4_battery_cell_2_voltage
     address: 34019
@@ -344,8 +344,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 3 Voltage"
     id: marstek_m4_battery_cell_3_voltage
     address: 34020
@@ -357,8 +357,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 4 Voltage"
     id: marstek_m4_battery_cell_4_voltage
     address: 34021
@@ -370,8 +370,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 5 Voltage"
     id: marstek_m4_battery_cell_5_voltage
     address: 34022
@@ -383,8 +383,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 6 Voltage"
     id: marstek_m4_battery_cell_6_voltage
     address: 34023
@@ -396,8 +396,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 7 Voltage"
     id: marstek_m4_battery_cell_7_voltage
     address: 34024
@@ -409,8 +409,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 8 Voltage"
     id: marstek_m4_battery_cell_8_voltage
     address: 34025
@@ -422,8 +422,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 9 Voltage"
     id: marstek_m4_battery_cell_9_voltage
     address: 34026
@@ -435,8 +435,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 10 Voltage"
     id: marstek_m4_battery_cell_10_voltage
     address: 34027
@@ -448,8 +448,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 11 Voltage"
     id: marstek_m4_battery_cell_11_voltage
     address: 34028
@@ -461,8 +461,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 12 Voltage"
     id: marstek_m4_battery_cell_12_voltage
     address: 34029
@@ -474,8 +474,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 13 Voltage"
     id: marstek_m4_battery_cell_13_voltage
     address: 34030
@@ -487,8 +487,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 14 Voltage"
     id: marstek_m4_battery_cell_14_voltage
     address: 34031
@@ -500,8 +500,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 15 Voltage"
     id: marstek_m4_battery_cell_15_voltage
     address: 34032
@@ -513,8 +513,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Cell 16 Voltage"
     id: marstek_m4_battery_cell_16_voltage
     address: 34033
@@ -526,8 +526,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Internal Temperature"
     id: marstek_m4_internal_temperature
     address: 35000
@@ -540,8 +540,8 @@ sensor:
       - multiply: 0.1
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Internal MOS1 Temperature"
     id: marstek_m4_internal_mos1_temperature
     address: 35001
@@ -554,8 +554,8 @@ sensor:
       - multiply: 0.1
     skip_updates: 119
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Internal MOS2 Temperature"
     id: marstek_m4_internal_mos2_temperature
     address: 35002
@@ -568,8 +568,8 @@ sensor:
       - multiply: 0.1
     skip_updates: 119
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Max Cell Temperature"
     id: marstek_m4_max_cell_temperature
     address: 35010
@@ -582,8 +582,8 @@ sensor:
       - multiply: 0.1
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Min Cell Temperature"
     id: marstek_m4_min_cell_temperature
     address: 35011
@@ -596,16 +596,16 @@ sensor:
       - multiply: 0.1
     skip_updates: 5
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Inverter State Number"
     id: marstek_m4_inverter_state_number
     address: 35100
     register_type: holding
     value_type: U_WORD
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Charge Voltage Limit"
     id: marstek_m4_battery_charge_voltage_limit
     address: 35110
@@ -617,8 +617,8 @@ sensor:
       - multiply: 0.1
     skip_updates: 17
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Charge Current Limit"
     id: marstek_m4_battery_charge_current_limit
     address: 35111
@@ -630,8 +630,8 @@ sensor:
       - multiply: 0.1
     skip_updates: 17
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Discharge Current Limit"
     id: marstek_m4_battery_discharge_current_limit
     address: 35112
@@ -643,8 +643,8 @@ sensor:
       - multiply: 0.01
     skip_updates: 17
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Maximum Cell Voltage"
     id: marstek_m4_battery_maximum_cell_voltage
     address: 37007
@@ -656,8 +656,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 17
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Battery Minimum Cell Voltage"
     id: marstek_m4_battery_minimum_cell_voltage
     address: 37008
@@ -669,8 +669,8 @@ sensor:
       - multiply: 0.001
     skip_updates: 17
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Backup Function Number"
     id: marstek_m4_backup_function_number
     address: 41200
@@ -678,8 +678,8 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 0
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 RS485 Control Mode Number"
     id: marstek_m4_rs485_control_mode_number
     address: 42000
@@ -687,8 +687,8 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 0
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Forcible Charge Discharge Number"
     id: marstek_m4_forcible_charge_discharge_number
     address: 42010
@@ -696,8 +696,8 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 0
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Charge To SOC Number"
     id: marstek_m4_charge_to_soc_number
     address: 42011
@@ -706,8 +706,8 @@ sensor:
     unit_of_measurement: "%"
     accuracy_decimals: 0
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Forcible Charge Power Number"
     id: marstek_m4_forcible_charge_power_number
     address: 42020
@@ -716,8 +716,8 @@ sensor:
     unit_of_measurement: W
     accuracy_decimals: 0
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Forcible Discharge Power Number"
     id: marstek_m4_forcible_discharge_power_number
     address: 42021
@@ -726,8 +726,8 @@ sensor:
     unit_of_measurement: W
     accuracy_decimals: 0
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 User Work Mode number"
     id: marstek_m4_user_work_mode_number
     address: 43000
@@ -736,8 +736,8 @@ sensor:
     accuracy_decimals: 0
     skip_updates: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Max Charge Power Number"
     id: marstek_m4_max_charge_power_number
     address: 44002
@@ -747,8 +747,8 @@ sensor:
     accuracy_decimals: 0
     skip_updates: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Max Discharge Power Number"
     id: marstek_m4_max_discharge_power_number
     address: 44003
@@ -810,8 +810,8 @@ sensor:
       return (soc / 100.0f) * maxbat;
 
 text_sensor:
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 MAC"
     id: marstek_m4_mac
     address: 30304
@@ -821,8 +821,8 @@ text_sensor:
     raw_encode: ANSI
     skip_updates: 59
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 COM Module version"
     id: marstek_m4_com_module_version
     address: 30350
@@ -832,8 +832,8 @@ text_sensor:
     raw_encode: ANSI
     skip_updates: 59
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Device Name"
     id: marstek_m4_device_name
     address: 31000
@@ -900,8 +900,8 @@ text_sensor:
 
 
 select:
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 RS485 Control Mode"
     id: marstek_m4_rs485_control_mode
     address: 42000
@@ -911,8 +911,8 @@ select:
       "disable": 21947
       "enable": 21930
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 User Work Mode"
     id: marstek_m4_user_work_mode
     address: 43000
@@ -923,8 +923,8 @@ select:
       "anti-feed": 1
       "ai": 2
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Forcible Charge/Discharge"
     id: marstek_m4_forcible_charge_discharge
     address: 42010
@@ -935,8 +935,8 @@ select:
       "charge": 1
       "discharge": 2
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Backup Function"
     id: marstek_m4_backup_function
     address: 41200
@@ -948,8 +948,8 @@ select:
 
 
 number:
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Forcible Charge Power"
     id: marstek_m4_forcible_charge_power
     address: 42020
@@ -960,8 +960,8 @@ number:
     max_value: 2500
     step: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Forcible Discharge Power"
     id: marstek_m4_forcible_discharge_power
     address: 42021
@@ -972,8 +972,8 @@ number:
     max_value: 2500
     step: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Charge To SOC"
     id: marstek_m4_charge_to_soc
     address: 42011
@@ -984,8 +984,8 @@ number:
     max_value: 100
     step: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Max Charge Power"
     id: marstek_m4_max_charge_power
     address: 44002
@@ -996,8 +996,8 @@ number:
     max_value: 2500
     step: 1
 
-  - platform: modbus_controller
-    modbus_controller_id: marstek_m4_controller
+  - platform: modbustcp_controller
+    modbustcp_controller_id: marstek_m4_controller
     name: "Marstek m4 Max Discharge Power"
     id: marstek_m4_max_discharge_power
     address: 44003
