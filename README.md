@@ -7,7 +7,13 @@ homeassistant:
   packages: !include_dir_named packages
 ```
 * Create a subfolder called packages and copy the "marstek_m1_modbus_tcp.yaml" file from this repo to the folder => /config/packages/marstek_m1_modbus_tcp.yaml
-Change [YOURIPADDRESS] in the yaml to your own marstek battery IP adress.
+* Add the IP(s) to your `secrets.yaml`:
+```
+marstek_m1_ip: 192.168.0.245
+marstek_m2_ip: 192.168.0.246
+marstek_m3_ip: 192.168.0.247
+marstek_m4_ip: 192.168.0.248
+```
 
 * Restart your Home Assistant.
 
@@ -23,4 +29,3 @@ For the graphics inside the menu go to HACS (if installed) and install apexchart
 .
 > [!TIP]
 > To control the battery(s) using NodeRed have a look [here.](https://github.com/gitcodebob/marstek-venus-rs485-node-red)
-
