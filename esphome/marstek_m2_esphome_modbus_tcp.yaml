@@ -809,16 +809,15 @@ sensor:
       if (isnan(maxbat) || isnan(soc)) return NAN;
       return (soc / 100.0f) * maxbat;
 
-text_sensor:
+
   - platform: modbustcp_controller
     modbustcp_controller_id: marstek_m2_controller
     name: "Marstek m2 MAC"
     id: marstek_m2_mac
     address: 30304
     register_type: holding
+    value_type: U_WORD
     register_count: 6
-    response_size: 12
-    raw_encode: ANSI
     skip_updates: 59
 
   - platform: modbustcp_controller
@@ -827,9 +826,8 @@ text_sensor:
     id: marstek_m2_com_module_version
     address: 30350
     register_type: holding
+    value_type: U_WORD
     register_count: 6
-    response_size: 12
-    raw_encode: ANSI
     skip_updates: 59
 
   - platform: modbustcp_controller
@@ -838,9 +836,8 @@ text_sensor:
     id: marstek_m2_device_name
     address: 31000
     register_type: holding
+    value_type: U_WORD
     register_count: 10
-    response_size: 20
-    raw_encode: ANSI
     skip_updates: 59
 
   - platform: template
@@ -848,56 +845,28 @@ text_sensor:
     id: marstek_m2_wifi_state
     update_interval: 30s
     lambda: |-
-      if (isnan(id(marstek_m2_wifi_state_number).state)) return std::string("unknown");
-      switch ((int) id(marstek_m2_wifi_state_number).state) {
-        case 0: return std::string("Disconnected");
-        case 1: return std::string("Connected");
-        default: return std::string("Unknown");
-      }
+      return id(marstek_m2_wifi_state_number).state;
 
   - platform: template
     name: "Marstek m2 BT State"
     id: marstek_m2_bt_state
     update_interval: 30s
     lambda: |-
-      if (isnan(id(marstek_m2_bt_state_number).state)) return std::string("unknown");
-      switch ((int) id(marstek_m2_bt_state_number).state) {
-        case 0: return std::string("Disconnected");
-        case 1: return std::string("Connected after reboot");
-        case 2: return std::string("Connected");
-        case 3: return std::string("Active");
-        default: return std::string("Unknown");
-      }
+      return id(marstek_m2_bt_state_number).state;
 
   - platform: template
     name: "Marstek m2 Cloud State"
     id: marstek_m2_cloud_state
     update_interval: 30s
     lambda: |-
-      if (isnan(id(marstek_m2_cloud_state_number).state)) return std::string("unknown");
-      switch ((int) id(marstek_m2_cloud_state_number).state) {
-        case 0: return std::string("Disconnected");
-        case 1: return std::string("Connected");
-        default: return std::string("Unknown");
-      }
+      return id(marstek_m2_cloud_state_number).state;
 
   - platform: template
     name: "Marstek m2 Inverter State"
     id: marstek_m2_inverter_state
     update_interval: 30s
     lambda: |-
-      if (isnan(id(marstek_m2_inverter_state_number).state)) return std::string("unknown");
-      switch ((int) id(marstek_m2_inverter_state_number).state) {
-        case 0: return std::string("Sleep");
-        case 1: return std::string("Standby");
-        case 2: return std::string("Charge");
-        case 3: return std::string("Discharge");
-        case 4: return std::string("Fault");
-        case 5: return std::string("Idle");
-        case 6: return std::string("AC bypass");
-        default: return std::string("Unknown state");
-      }
-
+      return id(marstek_m2_inverter_state_number).state;
 
 select:
   - platform: modbustcp_controller
